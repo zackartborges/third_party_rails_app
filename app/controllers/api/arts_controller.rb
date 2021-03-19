@@ -1,6 +1,8 @@
 class Api::ArtsController < ApplicationController
+  # require "http"
+
   def index
-    response = HTTP.get ("https://api.harvardartmuseums.org/painting?apikey=f342008b-d84a-4470-875f-d63828634ff1")
+    response = HTTP.get ("https://api.harvardartmuseums.org/person?apikey=#{Rails.application.credentials.arts_api[:api_key]}")
     render json: response.parse
   end
 end
